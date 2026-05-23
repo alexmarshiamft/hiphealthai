@@ -108,6 +108,27 @@ export default function LandingPage() {
             Contact for Custom Cloud Setup
           </a>
         </div>
+
+        {/* Private Cloud & Whitelabel Licensing */}
+        <div className={`${styles.costCard} ${styles.costCardPrimary}`} style={{ borderColor: '#6366f1', boxShadow: '0 8px 24px rgba(99, 102, 241, 0.15)' }}>
+          <h3 className={styles.costTitle} style={{ color: '#6366f1' }}>On-Prem & Whitelabel</h3>
+          <div style={{ fontSize: '1.5rem', fontWeight: 600, color: '#6366f1', margin: '1.5rem 0' }}>
+            Full Software Ownership
+          </div>
+          <div className={styles.billedText}>100% On-Premises Hosting</div>
+          <p className={styles.costDesc} style={{ minHeight: '80px' }}>
+            Deploy a fully customized, whitelabeled version of the scribe software directly onto your own local servers or secure GCP/AWS cloud tenancy.
+          </p>
+          <ul style={{ textAlign: 'left', fontSize: '0.85rem', color: 'var(--text-muted)', margin: '1rem 0 2rem', paddingLeft: '1.25rem', lineHeight: '1.8' }}>
+            <li><strong>Total Data Privacy:</strong> All code, databases, and credentials reside entirely on your servers.</li>
+            <li><strong>Zero Platform Access:</strong> Complete revocation of Hip Health AI access post-installation.</li>
+            <li><strong>Customized to Your Practice:</strong> Tailored clinical templates, branding, custom styling, and local integrations.</li>
+            <li><strong>Tiered Subscription Support:</strong> Priority updates, SLA-backed technical assistance, and customized tooling tiers.</li>
+          </ul>
+          <a href="mailto:sales@hiphealthai.com?subject=On-Premises%20and%20Whitelabel%20Licensing%20Inquiry" className={styles.salesButton} style={{ backgroundColor: '#6366f1', width: '100%', textDecoration: 'none', display: 'block', textAlign: 'center' }}>
+            Inquire for Whitelabel Licensing
+          </a>
+        </div>
       </div>
 
 

@@ -14,7 +14,7 @@ export default function LandingPage() {
           <span style={{ display: 'block', fontSize: '1.2rem', fontWeight: 600, letterSpacing: '0.25em' }}>HIP HEALTH</span>
           <span style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.3em' }}>SECURE AI SCRIBE</span>
         </div>
-        <h1 className={styles.title}>The Only Zero-Retention AI Scribe</h1>
+        <h1 className={styles.title}>The Premier Private-Cloud Zero-Retention Scribe</h1>
         <p className={styles.subtitle}>
           Commercial AI scribes are built for the masses, permanently storing your patients&apos; most sensitive trauma notes. We built a bespoke, ephemeral architecture designed specifically for high-security practice environments. 
           <strong> Audio is never saved to a database or storage bucket—it is processed strictly inline in ephemeral RAM and instantly destroyed.</strong>
@@ -106,11 +106,11 @@ export default function LandingPage() {
         {/* Enterprise Tier */}
         <div className={`${styles.costCard} ${styles.costCardPrimary}`} style={{ borderColor: '#6366f1', boxShadow: '0 8px 24px rgba(99, 102, 241, 0.15)' }}>
           <h3 className={styles.costTitle} style={{ color: '#6366f1' }}>Enterprise Tier</h3>
-          <div className={styles.costPrice} style={{ color: '#6366f1' }}>
-            ${isAnnual ? '199' : '249'}<span>/mo</span>
+          <div className={styles.costPrice} style={{ color: '#6366f1', fontSize: '2.5rem', margin: '1.25rem 0' }}>
+            Custom Pricing
           </div>
-          <div className={styles.billedText}>{isAnnual ? 'Billed $2,388 annually' : 'Billed monthly'}</div>
-          <p className={styles.costDesc}>Everything in Pro, plus <strong>EHR Chrome Extension Integration</strong> and a signed BAA.</p>
+          <div className={styles.billedText}>Volume-based negotiated rates</div>
+          <p className={styles.costDesc}>Everything in Pro, plus a **Dedicated Private Cloud Deployment** (GCP), custom clinical note templates, and fully custom BAAs.</p>
           <a href="mailto:sales@hiphealthai.com?subject=Enterprise%20Tier%20Inquiry" className={styles.salesButton} style={{ backgroundColor: '#6366f1' }}>
             Contact Sales
           </a>

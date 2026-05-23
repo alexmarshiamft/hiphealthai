@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function LandingPage() {
-  const [isAnnual, setIsAnnual] = useState(true);
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -38,7 +36,7 @@ export default function LandingPage() {
           onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
           onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
-            Start for Free <ArrowRight size={20} />
+            Try Live Demo <ArrowRight size={20} />
           </Link>
         </div>
 
@@ -62,60 +60,56 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className={styles.billingToggleWrapper}>
-        <div className={styles.billingToggle}>
-          <button 
-            className={`${styles.toggleBtn} ${!isAnnual ? styles.activeBtn : ''}`}
-            onClick={() => setIsAnnual(false)}
-          >
-            Monthly
-          </button>
-          <button 
-            className={`${styles.toggleBtn} ${isAnnual ? styles.activeBtn : ''}`}
-            onClick={() => setIsAnnual(true)}
-          >
-            Annually <span className={styles.discountBadge}>Save 20%</span>
-          </button>
-        </div>
-      </div>
+      {/* Demo vs Production Environment Split */}
+      <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary)', marginTop: '4rem', marginBottom: '1rem' }}>Platform Environments</h2>
+      <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
+        Select your environment. To maintain strict HIPAA compliance, real patient data is legally prohibited in our sandbox environments before executing a BAA.
+      </p>
 
       <div className={styles.costSection}>
-        {/* Base Tier */}
+        {/* Demo Sandbox Mode */}
         <div className={`${styles.costCard} ${styles.costCardInferior}`}>
-          <h3 className={styles.costTitle}>Base Security Tier</h3>
-          <div className={styles.costPrice}>
-            ${isAnnual ? '29' : '35'}<span>/mo</span>
+          <h3 className={styles.costTitle} style={{ color: 'var(--text-main)' }}>Demo Sandbox</h3>
+          <div style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--primary)', margin: '1.5rem 0' }}>
+            Instant Preview
           </div>
-          <div className={styles.billedText}>{isAnnual ? 'Billed $348 annually' : 'Billed monthly'}</div>
-          <p className={styles.costDesc}>Includes Zero-Transmission audio processing, DLP pre-scrubbing, and standard SOAP formatting.</p>
-        </div>
-
-        {/* Pro Tier */}
-        <div className={`${styles.costCard} ${styles.costCardPrimary}`}>
-          <h3 className={styles.costTitle}>Pro Clinical Tier</h3>
-          <div className={`${styles.costPrice} ${styles.costPricePrimary}`}>
-            ${isAnnual ? '99' : '119'}<span>/mo</span>
-          </div>
-          <div className={styles.billedText}>{isAnnual ? 'Billed $1,188 annually' : 'Billed monthly'}</div>
-          <p className={styles.costDesc}>Everything in Base, plus <strong>Custom Form Templates</strong> and automated <strong>Patient-Facing Summaries</strong>.</p>
-          <Link href="/login" className={styles.salesButton}>
-            Start Free Trial
+          <div className={styles.billedText}>No Credit Card Required</div>
+          <p className={styles.costDesc} style={{ minHeight: '80px' }}>
+            Evaluate transcription speed, SOAP note scrubbing, and auto-fill extensions instantly in a secure sandbox.
+          </p>
+          <ul style={{ textAlign: 'left', fontSize: '0.85rem', color: 'var(--text-muted)', margin: '1rem 0 2rem', paddingLeft: '1.25rem', lineHeight: '1.8' }}>
+            <li>Convenient SMS 2FA enabled for testing</li>
+            <li><strong>STRICT LIABILITY:</strong> No active patient PHI allowed</li>
+            <li>Zero-retention local audio processing</li>
+          </ul>
+          <Link href="/login" className={styles.salesButton} style={{ width: '100%', textDecoration: 'none', display: 'block', textAlign: 'center' }}>
+            Try Live Demo
           </Link>
         </div>
 
-        {/* Enterprise Tier */}
-        <div className={`${styles.costCard} ${styles.costCardPrimary}`} style={{ borderColor: '#6366f1', boxShadow: '0 8px 24px rgba(99, 102, 241, 0.15)' }}>
-          <h3 className={styles.costTitle} style={{ color: '#6366f1' }}>Enterprise Tier</h3>
-          <div className={styles.costPrice} style={{ color: '#6366f1', fontSize: '2.5rem', margin: '1.25rem 0' }}>
-            Custom Pricing
+        {/* Production Clinical Mode */}
+        <div className={`${styles.costCard} ${styles.costCardPrimary}`} style={{ borderColor: 'var(--primary)', boxShadow: '0 8px 24px rgba(42, 139, 139, 0.15)' }}>
+          <h3 className={styles.costTitle} style={{ color: 'var(--primary)' }}>Production Clinical</h3>
+          <div style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--primary)', margin: '1.5rem 0' }}>
+            HIPAA Authorized
           </div>
-          <div className={styles.billedText}>Volume-based negotiated rates</div>
-          <p className={styles.costDesc}>Everything in Pro, plus a **Dedicated Private Cloud Deployment** (GCP), custom clinical note templates, and fully custom BAAs.</p>
-          <a href="mailto:sales@hiphealthai.com?subject=Enterprise%20Tier%20Inquiry" className={styles.salesButton} style={{ backgroundColor: '#6366f1' }}>
-            Contact Sales
+          <div className={styles.billedText}>BAA Execution Required</div>
+          <p className={styles.costDesc} style={{ minHeight: '80px' }}>
+            Unlock secure, legally authorized clinical note drafting and BAA certifications for your active patient roster.
+          </p>
+          <ul style={{ textAlign: 'left', fontSize: '0.85rem', color: 'var(--text-muted)', margin: '1rem 0 2rem', paddingLeft: '1.25rem', lineHeight: '1.8' }}>
+            <li>Requires in-app signed BAA & terms</li>
+            <li><strong>Hardware Authenticator (TOTP) strictly required</strong></li>
+            <li>MANDATORY automated email verification</li>
+            <li>Cleared for full HIPAA & VA CCN billing</li>
+            <li>Private-cloud dedicated deployments available</li>
+          </ul>
+          <a href="mailto:sales@hiphealthai.com?subject=Production%20Cloud%20Deployment%20Inquiry" className={styles.salesButton} style={{ backgroundColor: 'var(--primary)', width: '100%', textDecoration: 'none', display: 'block', textAlign: 'center' }}>
+            Contact for Custom Cloud Setup
           </a>
         </div>
       </div>
+
 
       <section className={styles.comparisonSection}>
         <div className={styles.tableWrapper}>

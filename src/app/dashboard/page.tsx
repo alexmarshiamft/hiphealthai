@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { FileText, ShieldAlert, CheckCircle2, ArrowRight, Clipboard, Loader2, ShieldCheck, Lock, Server, EyeOff, Mic, Square, UploadCloud, MessageSquare, X } from 'lucide-react';
+import { FileText, ShieldAlert, CheckCircle2, ArrowRight, Clipboard, Loader2, ShieldCheck, Lock, Server, EyeOff, Mic, Square, MessageSquare, X } from 'lucide-react';
 import { useEffect, useCallback } from 'react';
 import styles from './dashboard.module.css';
 
@@ -10,7 +10,6 @@ export default function Dashboard() {
   const [structuredNote, setStructuredNote] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
-  const [copied, setCopied] = useState(false);
 
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackText, setFeedbackText] = useState('');
@@ -164,7 +163,7 @@ export default function Dashboard() {
     setIsProcessing(true);
     setError('');
     setStructuredNote('');
-    setCopied(false);
+    setCopiedSection(null);
 
     try {
       const formData = new FormData();

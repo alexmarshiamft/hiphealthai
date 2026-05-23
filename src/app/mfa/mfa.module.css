@@ -127,3 +127,93 @@
   gap: 0.5rem;
   text-align: left;
 }
+
+.tabContainer {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.25rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.tabButtonActive {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.optionHeader {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.optionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.optionDesc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.phoneInputGroup {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.sendCodeBtn {
+  padding: 0.75rem 1.25rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sendCodeBtn:hover {
+  background: var(--primary-hover);
+}
+
+.sendCodeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.countdownText {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: left;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+

@@ -175,6 +175,9 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
             <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
               By signing below and accessing Hip Health AI, you enter into a legally binding BAA and waiver of liability with the developer. This tool routes requests exclusively through Google Cloud Vertex AI under a secure BAA.
             </p>
+            <div style={{ padding: '0.75rem', backgroundColor: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '8px', color: '#4f46e5', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+              <strong>Production Mode Upgrade:</strong> Signing this BAA unlocks Production Mode. Upon signature, your email verification status is verified, SMS 2FA is permanently deactivated, and Hardware Authenticator TOTP is strictly enforced and required to process any active patient PHI.
+            </div>
 
             <div style={{ padding: '1rem', backgroundColor: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '8px', color: '#b91c1c', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '1.5rem' }}>
               <strong style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>

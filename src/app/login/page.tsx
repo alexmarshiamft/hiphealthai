@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, AlertTriangle } from 'lucide-react';
 import styles from './login.module.css';
 
 export default function LoginPage() {
@@ -27,14 +27,19 @@ export default function LoginPage() {
       <h1 className={styles.title}>Clinician Portal</h1>
       <p className={styles.subtitle}>Secure access for authorized personnel only.</p>
 
+      <div className={styles.warningBox}>
+        <div className={styles.warningBoxTitle}>
+          <AlertTriangle size={18} />
+          <span>Demo Sandbox Active</span>
+        </div>
+        <div>
+          Demo Mode allows you to preview scribing capabilities. Under federal HIPAA laws, no active patient PHI may be processed until a BAA is executed in the next step. SMS 2FA is permitted strictly for this demo.
+        </div>
+      </div>
+
       <button className={styles.loginButton} onClick={handleLogin}>
-        <svg width="24" height="24" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
-          <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
-          <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
-          <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
-          <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
-        </svg>
-        Sign in with Microsoft (MFA Required)
+        <ShieldCheck size={20} style={{ marginRight: '8px' }} />
+        Sign in to Try Demo
       </button>
 
       <p className={styles.disclaimer}>
@@ -44,3 +49,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

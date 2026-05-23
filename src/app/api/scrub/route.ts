@@ -69,30 +69,17 @@ Example:
 [content]
 ### Plan
 [content]`;
-    } else if (outputFormat === 'referral') {
-      formatInstructions = `Format the remaining text into a formal Psychiatric Referral Letter addressed to a colleague.
-      
-STRICT FORMATTING RULE: You MUST use a single Markdown header '### Referral Letter' for the content.
-Example:
-### Referral Letter
-Dear Colleague,
-I am referring [NAME] to your care...`;
-    } else if (outputFormat === 'rtw') {
-      formatInstructions = `Format the remaining text into a formal Return-to-Work Clearance letter.
-      
-STRICT FORMATTING RULE: You MUST use a single Markdown header '### Clearance Letter' for the content.
-Example:
-### Clearance Letter
-To Whom It May Concern,
-This letter is to certify...`;
-    } else if (outputFormat === 'custom' && customTemplate) {
-      formatInstructions = `Format the remaining text strictly according to the following custom rubric provided by the clinician:
-      
-=== CUSTOM RUBRIC START ===
-${customTemplate}
-=== CUSTOM RUBRIC END ===
+    }
 
-STRICT FORMATTING RULE: Adhere exactly to the sections requested in the rubric, formatting each section title as a Markdown header using '### '.`;
+    let customInstructionsText = '';
+    if (customTemplate && customTemplate.trim()) {
+      customInstructionsText = `
+[CLINICIAN CUSTOM SCRIBING INSTRUCTIONS]
+You MUST strictly adhere to these additional clinical guidelines or formatting directions provided by the clinician:
+=== CUSTOM INSTRUCTIONS START ===
+${customTemplate.trim()}
+=== CUSTOM INSTRUCTIONS END ===
+`;
     }
 
     let premiumInstructions = `
@@ -117,6 +104,7 @@ Your task is to take raw, stream-of-consciousness session notes (or an audio rec
 2. MILITARY/VA JARGON EXPANSION: If you detect military or VA acronyms (e.g., MST, TBI, OEF/OIF, PTSD, C&P, DBQ), perfectly expand and format them to meet Department of Veterans Affairs compliance standards.
 3. ${formatInstructions}
 ${premiumInstructions}
+${customInstructionsText}
 
 IMPORTANT INSTRUCTIONS:
 1. Output ONLY the final formatted document. Do not include any introductory conversational text.

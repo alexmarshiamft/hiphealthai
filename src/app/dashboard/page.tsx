@@ -17,7 +17,7 @@ export default function Dashboard() {
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
 
-  const [outputFormat, setOutputFormat] = useState('triwest');
+  const [outputFormat, setOutputFormat] = useState('standard_soap');
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
 
   // Premium Add-Ons
@@ -171,7 +171,7 @@ export default function Dashboard() {
       formData.append('rawNotes', rawNotes.trim());
       formData.append('outputFormat', outputFormat);
       if (includeSummary) formData.append('includeSummary', 'true');
-      if (outputFormat === 'custom' && customTemplate.trim()) {
+      if (customTemplate.trim()) {
         formData.append('customTemplate', customTemplate.trim());
       }
 
@@ -307,12 +307,20 @@ export default function Dashboard() {
 
       <main className={styles.grid}>
         <div className={styles.extensionWarning}>
-          <ShieldAlert size={20} />
+          <ShieldAlert size={20} style={{ flexShrink: 0 }} />
           <span>
             <strong>CRITICAL SECURITY WARNING:</strong> Please disable Grammarly or any text-reading browser extensions. 
             Do not use generic Ctrl+C to copy. Use the designated Copy buttons below to maintain HIPAA audit logs.
           </span>
         </div>
+        
+        <div className={styles.extensionWarning} style={{ backgroundColor: 'rgba(245, 158, 11, 0.1)', borderColor: 'rgba(245, 158, 11, 0.3)', color: '#d97706' }}>
+          <ShieldCheck size={20} style={{ flexShrink: 0 }} />
+          <span>
+            <strong>MANDATORY CLINICAL RESPONSIBILITY WARNING:</strong> You must read, review, and edit every note draft before pasting it. Do not paste blindly. You assume 100% legal, civil, and professional liability for your signed records. The AI is strictly an assistive writing tool; it is never a substitute for your independent clinical judgment.
+          </span>
+        </div>
+
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <FileText className={styles.icon} size={24} />
@@ -331,7 +339,7 @@ export default function Dashboard() {
               )}
             </button>
             <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-              Audio never leaves this device. Transcribed securely via local browser API.
+              Absolute Zero Data Retention. Audio never hits external servers, is processed ephemerally in RAM, and is wiped from memory after use.
             </span>
           </div>
           
@@ -360,39 +368,34 @@ export default function Dashboard() {
                 className={styles.selectFormat}
                 disabled={isProcessing}
               >
-                <option value="triwest">TriWest/VA SOAP Note</option>
                 <option value="standard_soap">Standard SOAP Note</option>
-                <option value="referral">Psychiatric Referral Letter</option>
-                <option value="rtw">Return-to-Work Clearance</option>
-                <option value="custom">Custom Template (Enterprise)</option>
+                <option value="triwest">TriWest/VA SOAP Note</option>
               </select>
             </div>
             
-            {/* Premium Add-Ons */}
+            {/* Custom Scribing Instructions & Add-Ons */}
             <div style={{ marginBottom: '1.5rem', padding: '1.5rem', backgroundColor: 'rgba(42, 139, 139, 0.05)', borderRadius: '12px', border: '1px solid rgba(42, 139, 139, 0.1)' }}>
-              <h3 style={{ fontSize: '1rem', marginBottom: '1rem', color: 'var(--primary)' }}>Premium Add-Ons</h3>
+              <h3 style={{ fontSize: '1rem', marginBottom: '1rem', color: 'var(--primary)' }}>Scribing Enhancements & Instructions</h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: outputFormat === 'custom' ? '1rem' : '0' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.25rem' }}>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.95rem', cursor: 'pointer' }}>
                   <input type="checkbox" checked={includeSummary} onChange={(e) => setIncludeSummary(e.target.checked)} disabled={isProcessing} style={{ accentColor: 'var(--primary)' }} />
                   Generate Patient-Facing &quot;After-Visit Summary&quot;
                 </label>
               </div>
 
-              {outputFormat === 'custom' && (
-                <div style={{ marginTop: '1rem' }}>
-                  <label htmlFor="customTemplate" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '0.5rem' }}>Paste Custom Template Rubric:</label>
-                  <textarea 
-                    id="customTemplate"
-                    className={styles.textarea}
-                    style={{ minHeight: '150px', padding: '0.75rem', fontSize: '0.9rem' }}
-                    placeholder="E.g., 1. Mood Assessment, 2. Risk Evaluation, 3. Proposed Interventions..."
-                    value={customTemplate}
-                    onChange={(e) => setCustomTemplate(e.target.value)}
-                    disabled={isProcessing}
-                  />
-                </div>
-              )}
+              <div style={{ marginTop: '0.5rem' }}>
+                <label htmlFor="customTemplate" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '0.5rem' }}>Custom Scribing Instructions (Optional):</label>
+                <textarea 
+                  id="customTemplate"
+                  className={styles.textarea}
+                  style={{ minHeight: '100px', padding: '0.75rem', fontSize: '0.9rem' }}
+                  placeholder="E.g., Focus heavily on somatic complaints, emphasize risk assessment, use short concise clinical sentences..."
+                  value={customTemplate}
+                  onChange={(e) => setCustomTemplate(e.target.value)}
+                  disabled={isProcessing}
+                />
+              </div>
             </div>
 
             <button 
@@ -485,7 +488,7 @@ export default function Dashboard() {
           <div className={styles.complianceCard}>
             <EyeOff className={styles.complianceIcon} size={24} />
             <h4>Zero Data Retention</h4>
-            <p>Your session notes are processed entirely in memory. They are never saved to a database, and are immediately discarded after the SOAP note is generated.</p>
+            <p>Absolute Zero Data Retention. Your session notes are processed ephemerally in secure RAM. They never hit external databases or storage servers, and clipboard contents are completely auto-wiped from your computer&apos;s memory after exactly 60 seconds.</p>
           </div>
           <div className={styles.complianceCard}>
             <ShieldAlert className={styles.complianceIcon} size={24} />

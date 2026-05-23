@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
-import { ShieldCheck, Download, Loader2, ShieldAlert, Key, RefreshCw, EyeOff, FileText, Clipboard, Printer } from 'lucide-react';
+import { ShieldCheck, Download, Loader2, ShieldAlert, Key, RefreshCw, EyeOff, FileText, Clipboard, Printer, Lock } from 'lucide-react';
 import styles from './consent.module.css';
 
 export default function ConsentPage() {
@@ -181,10 +181,10 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
 
             <div style={{ padding: '1rem', backgroundColor: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '8px', color: '#b91c1c', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '1.5rem' }}>
               <strong style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <ShieldAlert size={18} /> CRITICAL ASSUMPTION OF LIABILITY WAIVER:
+                <ShieldAlert size={18} /> CRITICAL ASSUMPTION OF LIABILITY WAIVER (PRACTICE CARRIES 100% LIABILITY):
               </strong>
               1. **NO BLIND PASTING:** You are legally and ethically prohibited from pasting AI notes blindly into SimplePractice or any EMR. You must read, review, and manually edit every word to ensure clinical accuracy.<br />
-              2. **100% PERSONAL PROFESSIONAL RESPONSIBILITY:** You assume sole, exclusive, and un-delegable civil, professional, and ethical liability for all finalized progress notes. AI is strictly a writing aid and is never a substitute for independent clinical judgment.<br />
+              2. **100% CLINICAL & PRACTICE LIABILITY:** Absolutely 100% of all legal, regulatory, civil, ethical, and clinical liability is assumed solely by the practice and the individual clinician. The software, developer, platform owners, and affiliates bear **absolute zero liability** under any circumstances.<br />
               3. **DEVELOPER INDEMNIFICATION:** You agree to indemnify, defend, and hold harmless the platform owner/developer from any and all malpractice claims, BBS licensing complaints, HIPAA audits, or civil lawsuits arising from your use of this software.
             </div>
 
@@ -198,7 +198,7 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
                   className={styles.input}
                   value={clinicianName}
                   onChange={(e) => setClinicianName(e.target.value)}
-                  placeholder="E.g., Alex Marshi, AMFT"
+                  placeholder=""
                   required
                 />
               </div>
@@ -210,7 +210,7 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
                   className={styles.input}
                   value={practiceName}
                   onChange={(e) => setPracticeName(e.target.value)}
-                  placeholder="E.g., ITR"
+                  placeholder=""
                   required
                 />
               </div>
@@ -222,7 +222,7 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
                   className={styles.input}
                   value={supervisorName}
                   onChange={(e) => setSupervisorName(e.target.value)}
-                  placeholder="E.g., Jane Doe, LMFT"
+                  placeholder=""
                   required
                 />
               </div>
@@ -234,7 +234,7 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
                   className={styles.input}
                   value={supervisorLicense}
                   onChange={(e) => setSupervisorLicense(e.target.value)}
-                  placeholder="E.g., LMFT999999"
+                  placeholder=""
                   required
                 />
               </div>
@@ -249,7 +249,7 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
                 onChange={(e) => setHasConsented(e.target.checked)}
               />
               <label htmlFor="ai-consent" className={styles.checkboxLabel} style={{ fontSize: '0.85rem' }}>
-                <strong>I accept full legal, civil, and professional liability</strong> for the notes processed. I agree to read and edit every note draft before signing, and hold the developer completely harmless from any licensing or legal claims.
+                <strong>I accept full legal, civil, and professional liability</strong> for the notes processed. I agree that all liability is held strictly by the practice and clinician, and hold the developer completely harmless from any licensing or legal claims.
               </label>
             </div>
           </div>
@@ -292,50 +292,62 @@ By signing below, I consent to the use of secure clinical AI scribing tools as o
         </div>
 
         {/* Dynamic Patient AI Consent Form Generator */}
-        <div className={styles.document} style={{ padding: '2rem', border: '1px dashed var(--primary)' }}>
-          <h2 style={{ marginTop: 0, color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <FileText size={24} /> 2. Patient AI Consent Form Generator
-          </h2>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-            California SB 903/AB 3030 mandates that you obtain explicit patient consent before using AI tools in clinical settings. 
-            Fill in your details on the left, and we will dynamically generate a compliant intake template for you to copy and upload to SimplePractice.
-          </p>
+        {clinicianName.trim() !== '' && practiceName.trim() !== '' && supervisorName.trim() !== '' && supervisorLicense.trim() !== '' ? (
+          <div className={styles.document} style={{ padding: '2rem', border: '1px dashed var(--primary)' }}>
+            <h2 style={{ marginTop: 0, color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <FileText size={24} /> 2. Patient AI Consent Form Generator
+            </h2>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+              California SB 903/AB 3030 mandates that you obtain explicit patient consent before using AI tools in clinical settings. 
+              We have dynamically generated your compliant intake template. You can now copy and upload it directly to SimplePractice.
+            </p>
 
-          <pre style={{ 
-            backgroundColor: 'rgba(255,255,255,0.6)', 
-            border: '1px solid var(--border-color)', 
-            borderRadius: '8px', 
-            padding: '1.5rem', 
-            whiteSpace: 'pre-wrap', 
-            fontFamily: 'inherit',
-            fontSize: '0.85rem',
-            lineHeight: 1.5,
-            color: 'var(--text-main)',
-            maxHeight: '350px',
-            overflowY: 'auto'
-          }}>
-            {getPatientConsentText()}
-          </pre>
+            <pre style={{ 
+              backgroundColor: 'rgba(255,255,255,0.6)', 
+              border: '1px solid var(--border-color)', 
+              borderRadius: '8px', 
+              padding: '1.5rem', 
+              whiteSpace: 'pre-wrap', 
+              fontFamily: 'inherit',
+              fontSize: '0.85rem',
+              lineHeight: 1.5,
+              color: 'var(--text-main)',
+              maxHeight: '350px',
+              overflowY: 'auto'
+            }}>
+              {getPatientConsentText()}
+            </pre>
 
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-            <button 
-              type="button" 
-              onClick={handleCopyConsent}
-              className={styles.submitButton}
-              style={{ flex: 1, padding: '0.75rem', backgroundColor: 'transparent', color: 'var(--primary)', border: '1.5px solid var(--primary)', display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}
-            >
-              <Clipboard size={18} /> Copy Consent Template
-            </button>
-            <button 
-              type="button" 
-              onClick={() => window.print()}
-              className={styles.submitButton}
-              style={{ flex: 1, padding: '0.75rem', display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}
-            >
-              <Printer size={18} /> Print Form
-            </button>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+              <button 
+                type="button" 
+                onClick={handleCopyConsent}
+                className={styles.submitButton}
+                style={{ flex: 1, padding: '0.75rem', backgroundColor: 'transparent', color: 'var(--primary)', border: '1.5px solid var(--primary)', display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}
+              >
+                <Clipboard size={18} /> Copy Consent Template
+              </button>
+              <button 
+                type="button" 
+                onClick={() => window.print()}
+                className={styles.submitButton}
+                style={{ flex: 1, padding: '0.75rem', display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}
+              >
+                <Printer size={18} /> Print Form
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.document} style={{ padding: '2.5rem', border: '1.5px dashed var(--border-color)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', minHeight: '400px' }}>
+            <Lock size={48} color="var(--text-muted)" style={{ marginBottom: '1.5rem', opacity: 0.6 }} />
+            <h3 style={{ color: 'var(--text-main)', marginBottom: '0.75rem', fontWeight: 600 }}>Consent Form Generator Locked</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', maxWidth: '400px', lineHeight: 1.5, margin: 0 }}>
+              To generate your CA SB 903/AB 3030 compliant Patient AI Consent Form, please complete Section 1 (Clinician Name, Clinic/Practice Name, Supervisor Name, and Supervisor License Number) first. 
+              <br /><br />
+              All data must be legally filled to compile your custom patient-facing intake contract.
+            </p>
+          </div>
+        )}
 
       </div>
     </div>

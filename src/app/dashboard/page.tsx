@@ -11,6 +11,21 @@ export default function Dashboard() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
 
+  // HIPAA Shared Responsibility Gating State (Hydration-Safe)
+  const [hasAcceptedSharedResponsibility, setHasAcceptedSharedResponsibility] = useState(true);
+
+  useEffect(() => {
+    const accepted = localStorage.getItem('hipaa_responsibility_accepted') === 'true';
+    setTimeout(() => {
+      setHasAcceptedSharedResponsibility(accepted);
+    }, 0);
+  }, []);
+
+  const handleAcceptResponsibility = () => {
+    localStorage.setItem('hipaa_responsibility_accepted', 'true');
+    setHasAcceptedSharedResponsibility(true);
+  };
+
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackText, setFeedbackText] = useState('');
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
@@ -277,6 +292,141 @@ export default function Dashboard() {
 
   return (
     <div className={styles.container}>
+      {!hasAcceptedSharedResponsibility && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          zIndex: 10000,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '2rem',
+        }}>
+          <div style={{
+            background: 'var(--card-bg)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '16px',
+            padding: '2.5rem',
+            maxWidth: '850px',
+            width: '100%',
+            maxHeight: '90vh',
+            overflowY: 'auto',
+            boxShadow: '0 20px 45px rgba(0, 0, 0, 0.25)',
+            textAlign: 'left'
+          }}>
+            <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <ShieldCheck size={48} color="var(--primary)" style={{ margin: '0 auto 1rem' }} />
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '0.5rem' }}>
+                HIPAA Shared Responsibility Agreement
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+                Operational security parameters and ultimate clinician clinical liability covenant.
+              </p>
+            </header>
+
+            {/* Why This is HIPAA-Compliant */}
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
+                1. System Privacy Safeguards (Why This is HIPAA-Compliant)
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div style={{ padding: '1rem', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                  <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '0.25rem' }}>🔒 End-to-End Encryption</strong>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4, display: 'block' }}>All data encrypted in transit using TLS 1.3 and at rest on Google Cloud Enterprise using AES-256.</span>
+                </div>
+                <div style={{ padding: '1rem', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                  <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '0.25rem' }}>🗄️ Business Associate Agreement (BAA)</strong>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4, display: 'block' }}>Requests routed exclusively through Google Vertex AI covered under a legally signed enterprise HIPAA BAA.</span>
+                </div>
+                <div style={{ padding: '1rem', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                  <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '0.25rem' }}>🚫 Zero Data Retention</strong>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4, display: 'block' }}>Transcriptions processed ephemerally in RAM and destroyed. Clipboard wiped clean after 60s.</span>
+                </div>
+                <div style={{ padding: '1rem', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                  <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '0.25rem' }}>🧠 No Model Training</strong>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4, display: 'block' }}>Google guarantees clinical session recordings are strictly prohibited from being used to train foundational AI models.</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Shared Responsibility Matrix */}
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
+                2. Shared Responsibility & Practice Safeguards
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-main)', lineHeight: 1.5, marginBottom: '1rem' }}>
+                Under HIPAA guidelines, security is a <strong>shared responsibility</strong>. While the software provides a fully encrypted, zero-retention conduit, the practice and clinician hold final clinical, legal, and operational custody:
+              </p>
+              <div style={{ padding: '1rem', backgroundColor: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: '#c53030', lineHeight: 1.5 }}>
+                1. **100% CLINICAL & PRACTICE LIABILITY:** The practice carries exclusive, un-delegable civil, professional, and ethical liability for all progress notes. The software developer and platform owner hold absolutely **zero liability** under any circumstances.<br />
+                2. **Device & Idle Locking:** The clinician is ultimately responsible for maintaining physical device security, locking screen access, and not leaving patient records readable on active monitors.<br />
+                3. **Intake Patient Consent:** Clinicians must legally secure explicit written patient consent (e.g. using the California SB 903/AB 3030 generator in onboarding) before capturing session transcripts.<br />
+                4. **Verification & Review:** The clinician warrants they will manually read, verify, and edit every note draft before signing off in EMR systems (no blind pasting).
+              </div>
+            </div>
+
+            {/* Official Federal Resources */}
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
+                3. Official Federal HIPAA Regulations & Guidelines
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+                As a covered entity, you are legally mandated to align your clinical practice with federal regulations. Please review the official Department of Health and Human Services (HHS) resources below:
+              </p>
+              <ul style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.75rem', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--primary)', listStyleType: 'disc' }}>
+                <li>
+                  <a href="https://www.hhs.gov/hipaa/for-professionals/security/index.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', fontWeight: 500 }}>
+                    HHS Official Guide: HIPAA Security Rule Standards
+                  </a>
+                  <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>Defines administrative, physical, and technical safeguards for electronic PHI (ePHI).</span>
+                </li>
+                <li>
+                  <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/index.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', fontWeight: 500 }}>
+                    HHS Official Guide: HIPAA Privacy Rule Standards
+                  </a>
+                  <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>Governs the legal use, disclosure, and patient rights regarding medical records.</span>
+                </li>
+                <li>
+                  <a href="https://www.hhs.gov/hipaa/for-professionals/breach-notification/index.html" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', fontWeight: 500 }}>
+                    HHS Official Guide: HIPAA Breach Notification Standard
+                  </a>
+                  <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>Establishes clinical requirements and practice alerts following an unauthorized leak.</span>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              onClick={handleAcceptResponsibility}
+              style={{
+                width: '100%',
+                padding: '1.25rem',
+                backgroundColor: 'var(--primary)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                boxShadow: '0 4px 15px rgba(100, 130, 141, 0.3)'
+              }}
+            >
+              <ShieldCheck size={20} />
+              COVENANT AND AGREE: I Accept Ultimate HIPAA and Clinical Responsibility
+            </button>
+          </div>
+        </div>
+      )}
+
       {isBlurred && (
         <div className={styles.blurOverlay} onClick={resetIdleTimer}>
           <div style={{ textAlign: 'center', background: 'white', padding: '3rem', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>

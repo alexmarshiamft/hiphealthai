@@ -4,17 +4,20 @@ export async function POST(req: Request) {
   try {
     const { feedback } = await req.json();
     
-    if (!feedback || feedback.trim() === '') {
-      return NextResponse.json({ error: 'Feedback cannot be empty' }, { status: 400 });
+    // Enforce string type and non-empty after trimming
+    if (typeof feedback !== 'string' || feedback.trim() === '') {
+      return NextResponse.json({ error: 'Feedback cannot be empty and must be a string' }, { status: 400 });
     }
 
-    // Since this is a zero-retention app, we simply dump the feedback into Google Cloud Logging
-    // The founder can view these securely in the GCP Console
-    console.log(`[USER FEEDBACK]: ${feedback}`);
+    // Prevent log leakage of raw user feedback and maintain zero-retention compliance
+    console.info(JSON.stringify({
+      event: 'FEEDBACK_SUBMITTED',
+      feedbackLength: feedback.length,
+      timestamp: new Date().toISOString()
+    }));
 
     return NextResponse.json({ success: true });
-  } catch (err: unknown) {
-    console.error('Error handling feedback:', err);
+  } catch {
     return NextResponse.json(
       { error: 'Failed to submit feedback' },
       { status: 500 }

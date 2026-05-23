@@ -4,7 +4,7 @@ import { verify } from 'otplib';
 
 export async function POST(req: Request) {
   try {
-    const { token, secret } = await req.json();
+    const { token } = await req.json();
     
     if (!token) {
       return NextResponse.json({ error: 'Missing 6-digit token' }, { status: 400 });
@@ -12,18 +12,19 @@ export async function POST(req: Request) {
 
     const cookieStore = await cookies();
     const storedSecret = cookieStore.get('mfa_secret')?.value;
-    const finalSecret = secret || storedSecret;
 
-    if (!finalSecret) {
+    if (!storedSecret) {
       return NextResponse.json({ error: 'MFA secret missing. Please restart setup.' }, { status: 400 });
     }
 
-    const result = await verify({ token, secret: finalSecret });
+    const result = await verify({ token, secret: storedSecret });
 
     if (result.valid) {
-      // In a real database scenario, we would save the secret to the user's DB record here.
-      // We store it in a long-lived cookie so they don't have to rescan the QR code on this device.
-      cookieStore.set('mfa_secret', finalSecret, {
+      // Delete temporary setup secret cookie
+      cookieStore.delete('mfa_secret');
+
+      // Set long-lived setup completion cookie (30 days)
+      cookieStore.set('mfa_setup_complete', 'true', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
         path: '/'
       });
 
-      // Set the active MFA session cookie (allows access to /dashboard)
+      // Set active MFA session cookie (12 hours)
       cookieStore.set('mfa_session', 'verified', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',

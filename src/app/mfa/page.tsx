@@ -12,26 +12,24 @@ export default function MFAPage() {
   const [verifying, setVerifying] = useState(false);
   const [needsSetup, setNeedsSetup] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
-  const [secret, setSecret] = useState('');
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Check if the user already has a secret in their cookie
+    // Check if the user already has verified setup in their cookies
     fetch('/api/mfa/status')
       .then(res => res.json())
       .then(data => {
-        if (data.hasSecret) {
+        if (data.hasVerifiedSetup) {
           setNeedsSetup(false);
           setLoading(false);
         } else {
           // Generate new secret for first time setup
           fetch('/api/mfa/generate', { method: 'POST' })
             .then(res => res.json())
-            .then(async (data) => {
-              setSecret(data.secret);
+            .then(async (genData) => {
               try {
-                const url = await QRCode.toDataURL(data.otpauth);
+                const url = await QRCode.toDataURL(genData.otpauth);
                 setQrDataUrl(url);
               } catch (err) {
                 console.error('Error generating QR code', err);
@@ -62,7 +60,7 @@ export default function MFAPage() {
       const res = await fetch('/api/mfa/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, secret: needsSetup ? secret : undefined }),
+        body: JSON.stringify({ token }),
       });
 
       const data = await res.json();

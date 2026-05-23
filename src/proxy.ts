@@ -17,5 +17,5 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   // Apply middleware only to these protected clinical routes
-  matcher: ['/dashboard/:path*', '/consent/:path*'],
+  matcher: ['/dashboard/:path*', '/consent/:path*', '/admin/:path*'],
 };

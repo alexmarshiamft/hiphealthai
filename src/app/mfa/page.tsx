@@ -12,7 +12,6 @@ export default function MFAPage() {
   const [verifying, setVerifying] = useState(false);
   const [needsSetup, setNeedsSetup] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
-  const [secret, setSecret] = useState('');
   const [token, setToken] = useState('');
   const [error, setError] = useState('');
 
@@ -29,7 +28,6 @@ export default function MFAPage() {
           fetch('/api/mfa/generate', { method: 'POST' })
             .then(res => res.json())
             .then(async (data) => {
-              setSecret(data.secret);
               try {
                 const url = await QRCode.toDataURL(data.otpauth);
                 setQrDataUrl(url);
@@ -62,7 +60,7 @@ export default function MFAPage() {
       const res = await fetch('/api/mfa/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, secret: needsSetup ? secret : undefined }),
+        body: JSON.stringify({ token }),
       });
 
       const data = await res.json();

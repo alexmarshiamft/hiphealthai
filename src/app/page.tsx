@@ -78,6 +78,9 @@ export default function LandingPage() {
           </button>
         </div>
       </div>
+      <p style={{ textAlign: 'center', color: 'var(--text-secondary)', margin: '-0.25rem auto 1.75rem', maxWidth: '900px', padding: '0 1rem' }}>
+        <strong>Why pricing stays low:</strong> the full pipeline is privately hosted on our dedicated Google Cloud project and routed directly through wholesale Vertex AI APIs. Per-note processing costs are typically fractions of a cent, helping clinics avoid high recurring subscription markups.
+      </p>
 
       <div className={styles.costSection}>
         {/* Base Tier */}

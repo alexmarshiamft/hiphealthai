@@ -8,9 +8,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Feedback cannot be empty' }, { status: 400 });
     }
 
-    // Since this is a zero-retention app, we simply dump the feedback into Google Cloud Logging
-    // The founder can view these securely in the GCP Console
-    console.log(`[USER FEEDBACK]: ${feedback}`);
+    console.info(JSON.stringify({
+      event: 'USER_FEEDBACK_SUBMITTED',
+      feedbackLength: feedback.length,
+      timestamp: new Date().toISOString()
+    }));
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <!-- Background Linear Gradient -->
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2a8b8b" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Shield Outline -->
+  <path d="M16 2.5C21.5 4.5 27 3.5 27 3.5V14.5C27 21.5 21.5 26.5 16 29.5C10.5 26.5 5 21.5 5 14.5V3.5C5 3.5 10.5 4.5 16 2.5Z" fill="#090d16" stroke="url(#shieldGrad)" stroke-width="2" />
+  
+  <!-- Inner Medical Cross & AI Pulse Line -->
+  <!-- Medical Cross in the center, subtly dimmed -->
+  <path d="M16 9V23M9 16H23" stroke="#2a8b8b" stroke-width="2" stroke-linecap="round" opacity="0.3" />
+  
+  <!-- Pulse Wave/ECG through center -->
+  <path d="M7 16H11.5L13.5 11L16.5 21L18.5 14.5L20.5 17.5L25 16" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+  
+  <!-- Top Right Sparkle -->
+  <path d="M23.5 6.5C23.5 6.5 24 8 24.5 8C25 8 25.5 6.5 25.5 6.5C25.5 6.5 27 6 27 5.5C27 5 25.5 4.5 25.5 4.5C25.5 4.5 25 3 24.5 3C24 3 23.5 4.5 23.5 4.5C23.5 4.5 22 5 22 5.5C22 6 23.5 6.5 23.5 6.5Z" fill="#10b981" />
+</svg>

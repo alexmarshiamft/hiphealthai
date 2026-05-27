@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /consent/
+Disallow: /mfa/
+Disallow: /admin/
+
+Sitemap: https://phi-scrubber-13754652105.us-central1.run.app/sitemap.xml

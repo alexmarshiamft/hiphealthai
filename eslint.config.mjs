@@ -12,6 +12,13 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "check_headers.js",
+    "generate_pdf.js",
+    "inspect.js",
+    "record_promo.js",
+    "run_tests.js",
+    "visual_e2e_audit.js",
+    "chrome-extension/**",
   ]),
 ]);
 

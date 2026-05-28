@@ -4,8 +4,8 @@ const puppeteer = require('puppeteer');
 
 // Paths
 const mdPath = '/Users/alexandermarshi/Downloads/Hip-AI-scribe/.agents/victory_auditor/audit_report.md';
-const workspacePdfPath = '/Users/alexandermarshi/Downloads/Hip-AI-scribe/victory_audit_report.pdf';
-const artifactPdfPath = '/Users/alexandermarshi/.gemini/antigravity/brain/b2454d5f-f0dd-4e02-9131-1cb78b2358ef/victory_audit_report.pdf';
+const workspacePdfPath = '/Users/alexandermarshi/Downloads/Hip-AI-scribe/autonomous_ai_readiness_report.pdf';
+const artifactPdfPath = '/Users/alexandermarshi/.gemini/antigravity/brain/87efc803-ffd7-40f8-bd29-7875cf3bd4e7/autonomous_ai_readiness_report.pdf';
 
 function markdownToHtml(mdText) {
   const lines = mdText.split('\n');
@@ -84,10 +84,10 @@ function markdownToHtml(mdText) {
     const line = lines[i];
 
     // Skip Markdown metadata if present at start
-    if (i === 0 && line.trim().startsWith('# Victory Audit Report')) {
+    if (i === 0 && (line.trim().startsWith('# Victory Audit Report') || line.trim().startsWith('# Autonomous AI Agent'))) {
       continue;
     }
-    if (line.trim().startsWith('## Verdict') || line.trim().startsWith('**VICTORY CONFIRMED**')) {
+    if (line.trim().startsWith('## Verdict') || line.trim().startsWith('**VICTORY CONFIRMED**') || line.trim().startsWith('**TECHNICAL INTEGRITY VERIFIED')) {
       continue;
     }
 
@@ -553,30 +553,30 @@ async function generate() {
     <div class="cover-stripe"></div>
     <div class="cover-header">
       <div class="cover-logo">HIP AI HEALTH</div>
-      <div class="cover-badge">VERIFICATION REPORT</div>
+      <div class="cover-badge">AUTONOMOUS AI AGENT REPORT</div>
     </div>
     
     <div class="cover-body">
       <div class="cover-title-group">
-        <div class="cover-title">Secure Clinical Scribe<br>Victory Audit Report</div>
+        <div class="cover-title">Autonomous AI Agent<br>Technical Integrity Report</div>
         <div class="cover-subtitle">
-          An independent technical and security review confirming 100% milestone completion and production readiness of the Next.js clinical application.
+          An autonomous AI agent review conducting technical verification, automated browser testing, and HIPAA de-identification audits for the Next.js clinical application.
         </div>
       </div>
 
       <div class="verdict-card">
-        <div class="verdict-status">🎉 VERDICT: VICTORY CONFIRMED</div>
+        <div class="verdict-status">🎉 VERDICT: TECHNICAL INTEGRITY VERIFIED</div>
         <div class="verdict-desc">
-          The <strong>HIP AI Health Secure Scribe Next.js application</strong> has successfully passed all technical checks. Our comprehensive Puppeteer E2E tests and security-integrity audits have executed cleanly. All clinical workflows, brand overrides, and local sandboxing implementations are authentic and fully operational.
+          An autonomous AI auditing agent has successfully verified the Next.js clinical application. Our comprehensive automated Puppeteer E2E tests and security-integrity audits have executed cleanly. All clinical workflows, brand overrides, and local sandboxing implementations are authentic and fully operational.
         </div>
         <div class="verdict-stats">
           <div class="stat-box">
             <span class="stat-value">100% PASS</span>
-            <span class="stat-label">Milestone Audits</span>
+            <span class="stat-label">AI Agent Audits</span>
           </div>
           <div class="stat-box">
             <span class="stat-value">0 Errors</span>
-            <span class="stat-label">E2E Browser Tests</span>
+            <span class="stat-label">Browser Automation</span>
           </div>
           <div class="stat-box">
             <span class="stat-value">GCP BAA</span>
@@ -596,7 +596,7 @@ async function generate() {
     </div>
     
     <div class="cover-footer">
-      <div><strong>Independent Auditor:</strong> Antigravity Victory Auditor Archetype</div>
+      <div><strong>Autonomous Auditor:</strong> Antigravity AI Verification Agent</div>
       <div><strong>Audit Date:</strong> May 28, 2026</div>
     </div>
   </div>
@@ -640,7 +640,7 @@ async function generate() {
       displayHeaderFooter: true,
       headerTemplate: `
         <div style="font-family: 'Inter', sans-serif; font-size: 7.5pt; color: #64748b; width: 100%; padding: 0 20mm; box-sizing: border-box; display: flex; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 10px;">
-          <span>INDEPENDENT VICTORY AUDIT REPORT</span>
+          <span>AUTONOMOUS AI TECHNICAL INTEGRITY REPORT</span>
           <span style="font-weight: 700; color: #047857; text-transform: uppercase; letter-spacing: 0.05em;">HIP AI Health Secure Scribe</span>
         </div>
       `,

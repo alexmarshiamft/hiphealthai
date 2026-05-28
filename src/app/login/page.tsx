@@ -1,20 +1,21 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ShieldCheck, AlertTriangle } from 'lucide-react';
 import styles from './login.module.css';
 
 export default function LoginPage() {
   const router = useRouter();
+  const [message, setMessage] = useState('');
 
   const handleLogin = () => {
-    // TODO: Implement Firebase Google Auth here
-    // import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    // const provider = new GoogleAuthProvider();
-    // signInWithPopup(auth, provider).then(() => router.push('/consent'));
+    if (process.env.NEXT_PUBLIC_ENABLE_DEMO_LOGIN === 'true') {
+      router.push('/mfa');
+      return;
+    }
 
-    // For demonstration, we bypass directly to the MFA layer
-    router.push('/mfa');
+    setMessage('Demo bypass has been disabled. Configure Microsoft Entra ID or another real identity provider before using this portal with PHI.');
   };
 
   return (
@@ -30,23 +31,28 @@ export default function LoginPage() {
       <div className={styles.warningBox}>
         <div className={styles.warningBoxTitle}>
           <AlertTriangle size={18} />
-          <span>Demo Sandbox Active</span>
+          <span>Authentication Required</span>
         </div>
         <div>
-          Demo Mode allows you to preview scribing capabilities. Under federal HIPAA laws, no active patient PHI may be processed until a BAA is executed in the next step. SMS 2FA is permitted strictly for this demo.
+          Demo Mode is disabled unless NEXT_PUBLIC_ENABLE_DEMO_LOGIN is explicitly set to true. Do not process active patient PHI until real identity, MFA, and a BAA-backed deployment are configured.
         </div>
       </div>
 
       <button className={styles.loginButton} onClick={handleLogin}>
         <ShieldCheck size={20} style={{ marginRight: '8px' }} />
-        Sign in to Try Demo
+        Sign in with configured IdP
       </button>
+
+      {message && (
+        <p role="alert" style={{ color: '#d9534f', marginTop: '1rem', fontWeight: 600 }}>
+          {message}
+        </p>
+      )}
 
       <p className={styles.disclaimer}>
         <ShieldCheck size={16} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: 4 }} />
-        HIPAA-compliant authentication powered by Microsoft Entra ID (Office 365). Multi-Factor Authentication is strictly enforced.
+        HIPAA-compliant authentication must be connected before production use.
       </p>
     </div>
   );
 }
-

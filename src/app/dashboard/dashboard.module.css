@@ -501,7 +501,7 @@
 }
 
 @media print {
-  body {
+  .container {
     display: none !important;
   }
 }

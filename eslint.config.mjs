@@ -19,6 +19,7 @@ const eslintConfig = defineConfig([
     "run_tests.js",
     "visual_e2e_audit.js",
     "chrome-extension/**",
+    "voiceover_gen.js",
   ]),
 ]);
 

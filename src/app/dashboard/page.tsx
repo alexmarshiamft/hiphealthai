@@ -3,8 +3,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   FileText, ShieldAlert, CheckCircle2, ArrowRight, Clipboard, Loader2, ShieldCheck, Lock, 
-  Server, EyeOff, Mic, Square, MessageSquare, X, Sparkles, Download, Settings, 
-  Trash2, Calendar, UserPlus, History, Award, BookOpen, Layers, Sun, Moon
+  Mic, Square, MessageSquare, X, Sparkles, Download, Settings, 
+  Trash2, Calendar, UserPlus, History, Award, Layers, Sun, Moon
 } from 'lucide-react';
 import styles from './dashboard.module.css';
 
@@ -144,15 +144,20 @@ export default function Dashboard() {
 
   // Custom workspace decluttering tabs
   const [activeOutputTab, setActiveOutputTab] = useState('note');
+  const [selectedPhase, setSelectedPhase] = useState<number>(1);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [showWhitelabel, setShowWhitelabel] = useState(false);
   const [showWarnings, setShowWarnings] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') !== 'light';
+    }
+    return true;
+  });
 
   // Initialize theme
   useEffect(() => {
     const savedTheme = typeof window !== 'undefined' ? (localStorage.getItem('theme') || 'dark') : 'dark';
-    setIsDarkMode(savedTheme === 'dark');
     if (savedTheme === 'light') {
       document.documentElement.classList.add('light-mode');
     } else {
@@ -2088,7 +2093,8 @@ export default function Dashboard() {
               {[
                 { id: 'note', label: '📝 SOAP Notes' },
                 { id: 'billing', label: '⏱️ CPT Billing' },
-                { id: 'ehr', label: '🖥️ EHR Sandbox' }
+                { id: 'ehr', label: '🖥️ EHR Sandbox' },
+                { id: 'spline', label: '📈 Arousal Spline' }
               ].map(tab => (
                 <button
                   key={tab.id}
@@ -2362,6 +2368,141 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </section>
+                </div>
+ 
+                {/* Block F: Interactive Arousal Spline Timeline */}
+                <div style={{ display: activeOutputTab === 'spline' ? 'block' : 'none' }}>
+                  <div style={{ 
+                    backgroundColor: 'rgba(42, 139, 139, 0.05)', 
+                    border: '1px solid rgba(42, 139, 139, 0.15)', 
+                    borderRadius: '12px', 
+                    padding: '1.5rem', 
+                    marginBottom: '1.5rem' 
+                  }}>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      Interactive Session Arousal Spline & Clinical Coaching
+                    </h3>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                      Review session stress arcs visually. Click on spline nodes (circles) to load evidence-based CBT tips and grounding interventions in real-time.
+                    </p>
+
+                    <div style={{ 
+                      backgroundColor: 'rgba(15, 23, 42, 0.4)', 
+                      border: '1px solid rgba(255, 255, 255, 0.05)', 
+                      borderRadius: '8px', 
+                      padding: '1rem', 
+                      display: 'flex', 
+                      justifyContent: 'center', 
+                      alignItems: 'center',
+                      marginBottom: '1.5rem'
+                    }}>
+                      <svg width="600" height="200" viewBox="0 0 600 200" style={{ maxWidth: '100%' }}>
+                        {/* Background reference line */}
+                        <line x1="50" y1="150" x2="550" y2="150" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="2" strokeDasharray="5,5" />
+                        
+                        {/* Spline curve */}
+                        <path d="M 50 150 Q 180 30 310 150 T 570 150" fill="none" stroke="var(--primary)" strokeWidth="4" />
+                        
+                        {/* Spline circle nodes */}
+                        <circle 
+                          cx="50" 
+                          cy="150" 
+                          r="12" 
+                          fill={selectedPhase === 1 ? 'var(--primary)' : 'rgba(42, 139, 139, 0.3)'} 
+                          stroke="var(--primary)" 
+                          strokeWidth="2"
+                          style={{ cursor: 'pointer', transition: 'all 0.2s' }} 
+                          onClick={() => setSelectedPhase(1)} 
+                        />
+                        <circle 
+                          cx="180" 
+                          cy="65" 
+                          r="12" 
+                          fill={selectedPhase === 2 ? 'var(--primary)' : 'rgba(42, 139, 139, 0.3)'} 
+                          stroke="var(--primary)" 
+                          strokeWidth="2"
+                          style={{ cursor: 'pointer', transition: 'all 0.2s' }} 
+                          onClick={() => setSelectedPhase(2)} 
+                        />
+                        <circle 
+                          cx="310" 
+                          cy="150" 
+                          r="12" 
+                          fill={selectedPhase === 3 ? 'var(--primary)' : 'rgba(42, 139, 139, 0.3)'} 
+                          stroke="var(--primary)" 
+                          strokeWidth="2"
+                          style={{ cursor: 'pointer', transition: 'all 0.2s' }} 
+                          onClick={() => setSelectedPhase(3)} 
+                        />
+                        <circle 
+                          cx="440" 
+                          cy="150" 
+                          r="12" 
+                          fill={selectedPhase === 4 ? 'var(--primary)' : 'rgba(42, 139, 139, 0.3)'} 
+                          stroke="var(--primary)" 
+                          strokeWidth="2"
+                          style={{ cursor: 'pointer', transition: 'all 0.2s' }} 
+                          onClick={() => setSelectedPhase(4)} 
+                        />
+
+                        {/* Labels */}
+                        <text x="50" y="185" fill="var(--text-muted)" fontSize="11" textAnchor="middle" fontWeight="600">Phase 1</text>
+                        <text x="180" y="40" fill="var(--text-muted)" fontSize="11" textAnchor="middle" fontWeight="600">Phase 2</text>
+                        <text x="310" y="185" fill="var(--text-muted)" fontSize="11" textAnchor="middle" fontWeight="600">Phase 3</text>
+                        <text x="440" y="185" fill="var(--text-muted)" fontSize="11" textAnchor="middle" fontWeight="600">Phase 4</text>
+                      </svg>
+                    </div>
+
+                    {/* Active Coaching Tip Card */}
+                    <div style={{ 
+                      backgroundColor: 'rgba(15, 23, 42, 0.6)', 
+                      border: '1px solid rgba(42, 139, 139, 0.2)', 
+                      borderRadius: '8px', 
+                      padding: '1.25rem',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}>
+                      {selectedPhase === 1 && (
+                        <div>
+                          <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem' }}>
+                            Phase 1: Intake & Baseline Arousal
+                          </h4>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
+                            Subjective baseline anxiety monitoring initiated. Explored initial professional stressors and chest tightness triggers to establish safe collaborative goals.
+                          </p>
+                        </div>
+                      )}
+                      {selectedPhase === 2 && (
+                        <div>
+                          <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem' }}>
+                            Phase 2: Narrative Core & Cognitive Distortions
+                          </h4>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
+                            Clinician focused heavily on identifying narrative cognitive distortions (catastrophizing, avoidance, emotional panic scaling). Core schemas explored to foster self-regulation.
+                          </p>
+                        </div>
+                      )}
+                      {selectedPhase === 3 && (
+                        <div>
+                          <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem' }}>
+                            Phase 3: Theoretical CBT / Somatic Intervention
+                          </h4>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
+                            Nervous system regulation via active CBT and somatic pacing exercises. Grounding breathing techniques utilized to alleviate somatic hyperarousal and panic peaks.
+                          </p>
+                        </div>
+                      )}
+                      {selectedPhase === 4 && (
+                        <div>
+                          <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem' }}>
+                            Phase 4: Integration & Action Plan
+                          </h4>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-main)', lineHeight: 1.5, margin: 0 }}>
+                            Established clear sovereign boundaries. Integrated cognitive behavioral shifts and somatic grounding tools into the client's home-practice self-care protocol.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </>
             ) : (

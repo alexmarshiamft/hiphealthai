@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ARTIFACT_DIR = '/Users/alexandermarshi/.gemini/antigravity/brain/36ee7a89-d1f4-44c2-ad79-6bea2f50e9a1';
-const URL = 'https://phi-scrubber-13754652105.us-central1.run.app/demo';
+const URL = process.env.TEST_URL || 'http://localhost:3002/demo';
 
 if (!fs.existsSync(ARTIFACT_DIR)) {
   fs.mkdirSync(ARTIFACT_DIR, { recursive: true });

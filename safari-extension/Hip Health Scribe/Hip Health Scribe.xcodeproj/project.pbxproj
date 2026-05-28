@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35CFFCCE2FC8192300536AEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFFCCD2FC8192300536AEB /* AppDelegate.swift */; };
+		35CFFCD22FC8192300536AEB /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCD02FC8192300536AEB /* Main.html */; };
+		35CFFCD42FC8192300536AEB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCD32FC8192300536AEB /* Icon.png */; };
+		35CFFCD62FC8192300536AEB /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCD52FC8192300536AEB /* Style.css */; };
+		35CFFCD82FC8192300536AEB /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCD72FC8192300536AEB /* Script.js */; };
+		35CFFCDA2FC8192300536AEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFFCD92FC8192300536AEB /* ViewController.swift */; };
+		35CFFCDD2FC8192300536AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCDB2FC8192300536AEB /* Main.storyboard */; };
+		35CFFCDF2FC8192500536AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCDE2FC8192500536AEB /* Assets.xcassets */; };
+		35CFFCE62FC8192500536AEB /* Hip Health Scribe Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 35CFFCE52FC8192500536AEB /* Hip Health Scribe Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35CFFCEB2FC8192500536AEB /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFFCEA2FC8192500536AEB /* SafariWebExtensionHandler.swift */; };
+		35CFFD042FC8192700536AEB /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCF72FC8192700536AEB /* popup.js */; };
+		35CFFD052FC8192700536AEB /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCF82FC8192700536AEB /* screenshots */; };
+		35CFFD062FC8192700536AEB /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCF92FC8192700536AEB /* background.js */; };
+		35CFFD072FC8192700536AEB /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFA2FC8192700536AEB /* popup.html */; };
+		35CFFD082FC8192700536AEB /* package-extension.sh in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFB2FC8192700536AEB /* package-extension.sh */; };
+		35CFFD092FC8192700536AEB /* hip-health-autofill-v2.0.zip in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFC2FC8192700536AEB /* hip-health-autofill-v2.0.zip */; };
+		35CFFD0A2FC8192700536AEB /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFD2FC8192700536AEB /* icons */; };
+		35CFFD0B2FC8192700536AEB /* deploy-extension.sh in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFE2FC8192700536AEB /* deploy-extension.sh */; };
+		35CFFD0C2FC8192700536AEB /* launch_extension_demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFCFF2FC8192700536AEB /* launch_extension_demo.js */; };
+		35CFFD0D2FC8192700536AEB /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFD002FC8192700536AEB /* manifest.json */; };
+		35CFFD0E2FC8192700536AEB /* mock-ehr.html in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFD012FC8192700536AEB /* mock-ehr.html */; };
+		35CFFD0F2FC8192700536AEB /* hip-health-autofill-v1.1.zip in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFD022FC8192700536AEB /* hip-health-autofill-v1.1.zip */; };
+		35CFFD102FC8192700536AEB /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 35CFFD032FC8192700536AEB /* content.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35CFFCE72FC8192500536AEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35CFFCC22FC8192300536AEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35CFFCE42FC8192500536AEB;
+			remoteInfo = "Hip Health Scribe Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35CFFCF22FC8192500536AEB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35CFFCE62FC8192500536AEB /* Hip Health Scribe Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		35CFFCCA2FC8192300536AEB /* Hip Health Scribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hip Health Scribe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35CFFCCD2FC8192300536AEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		35CFFCD12FC8192300536AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		35CFFCD32FC8192300536AEB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		35CFFCD52FC8192300536AEB /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		35CFFCD72FC8192300536AEB /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		35CFFCD92FC8192300536AEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		35CFFCDC2FC8192300536AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		35CFFCDE2FC8192500536AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35CFFCE02FC8192500536AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35CFFCE52FC8192500536AEB /* Hip Health Scribe Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hip Health Scribe Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35CFFCEA2FC8192500536AEB /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		35CFFCEC2FC8192500536AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35CFFCF72FC8192700536AEB /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = "../../../chrome-extension/popup.js"; sourceTree = "<group>"; };
+		35CFFCF82FC8192700536AEB /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; name = screenshots; path = "../../../chrome-extension/screenshots"; sourceTree = "<group>"; };
+		35CFFCF92FC8192700536AEB /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = "../../../chrome-extension/background.js"; sourceTree = "<group>"; };
+		35CFFCFA2FC8192700536AEB /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = "../../../chrome-extension/popup.html"; sourceTree = "<group>"; };
+		35CFFCFB2FC8192700536AEB /* package-extension.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "package-extension.sh"; path = "../../../chrome-extension/package-extension.sh"; sourceTree = "<group>"; };
+		35CFFCFC2FC8192700536AEB /* hip-health-autofill-v2.0.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "hip-health-autofill-v2.0.zip"; path = "../../../chrome-extension/hip-health-autofill-v2.0.zip"; sourceTree = "<group>"; };
+		35CFFCFD2FC8192700536AEB /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = "../../../chrome-extension/icons"; sourceTree = "<group>"; };
+		35CFFCFE2FC8192700536AEB /* deploy-extension.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "deploy-extension.sh"; path = "../../../chrome-extension/deploy-extension.sh"; sourceTree = "<group>"; };
+		35CFFCFF2FC8192700536AEB /* launch_extension_demo.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = launch_extension_demo.js; path = "../../../chrome-extension/launch_extension_demo.js"; sourceTree = "<group>"; };
+		35CFFD002FC8192700536AEB /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "../../../chrome-extension/manifest.json"; sourceTree = "<group>"; };
+		35CFFD012FC8192700536AEB /* mock-ehr.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "mock-ehr.html"; path = "../../../chrome-extension/mock-ehr.html"; sourceTree = "<group>"; };
+		35CFFD022FC8192700536AEB /* hip-health-autofill-v1.1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "hip-health-autofill-v1.1.zip"; path = "../../../chrome-extension/hip-health-autofill-v1.1.zip"; sourceTree = "<group>"; };
+		35CFFD032FC8192700536AEB /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = "../../../chrome-extension/content.js"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		35CFFCC72FC8192300536AEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35CFFCE22FC8192500536AEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35CFFCC12FC8192300536AEB = {
+			isa = PBXGroup;
+			children = (
+				35CFFCCC2FC8192300536AEB /* Hip Health Scribe */,
+				35CFFCE92FC8192500536AEB /* Hip Health Scribe Extension */,
+				35CFFCCB2FC8192300536AEB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		35CFFCCB2FC8192300536AEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				35CFFCCA2FC8192300536AEB /* Hip Health Scribe.app */,
+				35CFFCE52FC8192500536AEB /* Hip Health Scribe Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		35CFFCCC2FC8192300536AEB /* Hip Health Scribe */ = {
+			isa = PBXGroup;
+			children = (
+				35CFFCCD2FC8192300536AEB /* AppDelegate.swift */,
+				35CFFCD92FC8192300536AEB /* ViewController.swift */,
+				35CFFCDB2FC8192300536AEB /* Main.storyboard */,
+				35CFFCDE2FC8192500536AEB /* Assets.xcassets */,
+				35CFFCE02FC8192500536AEB /* Info.plist */,
+				35CFFCCF2FC8192300536AEB /* Resources */,
+			);
+			path = "Hip Health Scribe";
+			sourceTree = "<group>";
+		};
+		35CFFCCF2FC8192300536AEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35CFFCD02FC8192300536AEB /* Main.html */,
+				35CFFCD32FC8192300536AEB /* Icon.png */,
+				35CFFCD52FC8192300536AEB /* Style.css */,
+				35CFFCD72FC8192300536AEB /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		35CFFCE92FC8192500536AEB /* Hip Health Scribe Extension */ = {
+			isa = PBXGroup;
+			children = (
+				35CFFCF62FC8192700536AEB /* Resources */,
+				35CFFCEA2FC8192500536AEB /* SafariWebExtensionHandler.swift */,
+				35CFFCEC2FC8192500536AEB /* Info.plist */,
+			);
+			path = "Hip Health Scribe Extension";
+			sourceTree = "<group>";
+		};
+		35CFFCF62FC8192700536AEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35CFFCF72FC8192700536AEB /* popup.js */,
+				35CFFCF82FC8192700536AEB /* screenshots */,
+				35CFFCF92FC8192700536AEB /* background.js */,
+				35CFFCFA2FC8192700536AEB /* popup.html */,
+				35CFFCFB2FC8192700536AEB /* package-extension.sh */,
+				35CFFCFC2FC8192700536AEB /* hip-health-autofill-v2.0.zip */,
+				35CFFCFD2FC8192700536AEB /* icons */,
+				35CFFCFE2FC8192700536AEB /* deploy-extension.sh */,
+				35CFFCFF2FC8192700536AEB /* launch_extension_demo.js */,
+				35CFFD002FC8192700536AEB /* manifest.json */,
+				35CFFD012FC8192700536AEB /* mock-ehr.html */,
+				35CFFD022FC8192700536AEB /* hip-health-autofill-v1.1.zip */,
+				35CFFD032FC8192700536AEB /* content.js */,
+			);
+			name = Resources;
+			path = "Hip Health Scribe Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35CFFCC92FC8192300536AEB /* Hip Health Scribe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35CFFCF32FC8192500536AEB /* Build configuration list for PBXNativeTarget "Hip Health Scribe" */;
+			buildPhases = (
+				35CFFCC62FC8192300536AEB /* Sources */,
+				35CFFCC72FC8192300536AEB /* Frameworks */,
+				35CFFCC82FC8192300536AEB /* Resources */,
+				35CFFCF22FC8192500536AEB /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35CFFCE82FC8192500536AEB /* PBXTargetDependency */,
+			);
+			name = "Hip Health Scribe";
+			packageProductDependencies = (
+			);
+			productName = "Hip Health Scribe";
+			productReference = 35CFFCCA2FC8192300536AEB /* Hip Health Scribe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		35CFFCE42FC8192500536AEB /* Hip Health Scribe Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35CFFCEF2FC8192500536AEB /* Build configuration list for PBXNativeTarget "Hip Health Scribe Extension" */;
+			buildPhases = (
+				35CFFCE12FC8192500536AEB /* Sources */,
+				35CFFCE22FC8192500536AEB /* Frameworks */,
+				35CFFCE32FC8192500536AEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hip Health Scribe Extension";
+			packageProductDependencies = (
+			);
+			productName = "Hip Health Scribe Extension";
+			productReference = 35CFFCE52FC8192500536AEB /* Hip Health Scribe Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		35CFFCC22FC8192300536AEB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2650;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					35CFFCC92FC8192300536AEB = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					35CFFCE42FC8192500536AEB = {
+						CreatedOnToolsVersion = 26.5;
+					};
+				};
+			};
+			buildConfigurationList = 35CFFCC52FC8192300536AEB /* Build configuration list for PBXProject "Hip Health Scribe" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 35CFFCC12FC8192300536AEB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 35CFFCCB2FC8192300536AEB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35CFFCC92FC8192300536AEB /* Hip Health Scribe */,
+				35CFFCE42FC8192500536AEB /* Hip Health Scribe Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35CFFCC82FC8192300536AEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35CFFCD42FC8192300536AEB /* Icon.png in Resources */,
+				35CFFCDD2FC8192300536AEB /* Main.storyboard in Resources */,
+				35CFFCD82FC8192300536AEB /* Script.js in Resources */,
+				35CFFCD22FC8192300536AEB /* Main.html in Resources */,
+				35CFFCDF2FC8192500536AEB /* Assets.xcassets in Resources */,
+				35CFFCD62FC8192300536AEB /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35CFFCE32FC8192500536AEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35CFFD082FC8192700536AEB /* package-extension.sh in Resources */,
+				35CFFD092FC8192700536AEB /* hip-health-autofill-v2.0.zip in Resources */,
+				35CFFD0D2FC8192700536AEB /* manifest.json in Resources */,
+				35CFFD052FC8192700536AEB /* screenshots in Resources */,
+				35CFFD102FC8192700536AEB /* content.js in Resources */,
+				35CFFD0B2FC8192700536AEB /* deploy-extension.sh in Resources */,
+				35CFFD072FC8192700536AEB /* popup.html in Resources */,
+				35CFFD062FC8192700536AEB /* background.js in Resources */,
+				35CFFD0E2FC8192700536AEB /* mock-ehr.html in Resources */,
+				35CFFD0A2FC8192700536AEB /* icons in Resources */,
+				35CFFD0F2FC8192700536AEB /* hip-health-autofill-v1.1.zip in Resources */,
+				35CFFD0C2FC8192700536AEB /* launch_extension_demo.js in Resources */,
+				35CFFD042FC8192700536AEB /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		35CFFCC62FC8192300536AEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35CFFCDA2FC8192300536AEB /* ViewController.swift in Sources */,
+				35CFFCCE2FC8192300536AEB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35CFFCE12FC8192500536AEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35CFFCEB2FC8192500536AEB /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35CFFCE82FC8192500536AEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35CFFCE42FC8192500536AEB /* Hip Health Scribe Extension */;
+			targetProxy = 35CFFCE72FC8192500536AEB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		35CFFCD02FC8192300536AEB /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35CFFCD12FC8192300536AEB /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		35CFFCDB2FC8192300536AEB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35CFFCDC2FC8192300536AEB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		35CFFCED2FC8192500536AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		35CFFCEE2FC8192500536AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		35CFFCF02FC8192500536AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hip Health Scribe Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hip Health Scribe Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiphealth.scribe.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		35CFFCF12FC8192500536AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hip Health Scribe Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hip Health Scribe Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiphealth.scribe.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		35CFFCF42FC8192500536AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hip Health Scribe/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hip Health Scribe";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hiphealth.Hip-Health-Scribe";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		35CFFCF52FC8192500536AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Hip Health Scribe/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hip Health Scribe";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hiphealth.Hip-Health-Scribe";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		35CFFCC52FC8192300536AEB /* Build configuration list for PBXProject "Hip Health Scribe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35CFFCED2FC8192500536AEB /* Debug */,
+				35CFFCEE2FC8192500536AEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35CFFCEF2FC8192500536AEB /* Build configuration list for PBXNativeTarget "Hip Health Scribe Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35CFFCF02FC8192500536AEB /* Debug */,
+				35CFFCF12FC8192500536AEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35CFFCF32FC8192500536AEB /* Build configuration list for PBXNativeTarget "Hip Health Scribe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35CFFCF42FC8192500536AEB /* Debug */,
+				35CFFCF52FC8192500536AEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 35CFFCC22FC8192300536AEB /* Project object */;
+}

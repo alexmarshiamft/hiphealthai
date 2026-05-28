@@ -1,21 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ShieldCheck, AlertTriangle } from 'lucide-react';
 import styles from './login.module.css';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [message, setMessage] = useState('');
 
-  const handleLogin = () => {
-    if (process.env.NEXT_PUBLIC_ENABLE_DEMO_LOGIN === 'true') {
-      router.push('/mfa');
-      return;
-    }
-
-    setMessage('Demo bypass has been disabled. Configure Microsoft Entra ID or another real identity provider before using this portal with PHI.');
+  const handleLaunchDemo = () => {
+    router.push('/demo');
   };
 
   return (
@@ -25,33 +18,27 @@ export default function LoginPage() {
         <span className={styles.logoTextSub}>SECURE AI SCRIBE</span>
       </div>
 
-      <h1 className={styles.title}>Clinician Portal</h1>
-      <p className={styles.subtitle}>Secure access for authorized personnel only.</p>
+      <h1 className={styles.title}>Clinician Portal Demo</h1>
+      <p className={styles.subtitle}>Preview the secure AI scribe workflow with sample-only scenarios.</p>
 
       <div className={styles.warningBox}>
         <div className={styles.warningBoxTitle}>
           <AlertTriangle size={18} />
-          <span>Authentication Required</span>
+          <span>Presentation Sandbox</span>
         </div>
         <div>
-          Demo Mode is disabled unless NEXT_PUBLIC_ENABLE_DEMO_LOGIN is explicitly set to true. Do not process active patient PHI until real identity, MFA, and a BAA-backed deployment are configured.
+          This build is for product walkthroughs using simulated content. Production identity, compliance, audit, and storage controls should be connected during onboarding.
         </div>
       </div>
 
-      <button className={styles.loginButton} onClick={handleLogin}>
+      <button className={styles.loginButton} onClick={handleLaunchDemo}>
         <ShieldCheck size={20} style={{ marginRight: '8px' }} />
-        Sign in with configured IdP
+        Launch Demo
       </button>
-
-      {message && (
-        <p role="alert" style={{ color: '#d9534f', marginTop: '1rem', fontWeight: 600 }}>
-          {message}
-        </p>
-      )}
 
       <p className={styles.disclaimer}>
         <ShieldCheck size={16} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: 4 }} />
-        HIPAA-compliant authentication must be connected before production use.
+        Demo mode is intended for buyer presentations and sample data only.
       </p>
     </div>
   );

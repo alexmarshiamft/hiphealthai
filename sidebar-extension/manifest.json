@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Hip Health Injected Sidebar",
+  "version": "1.0",
+  "description": "Toggles a beautiful, zero-retention clinical scribe sidebar directly inside your active EHR tab.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://*.googleapis.com/*"
+  ],
+  "action": {
+    "default_title": "Toggle Scribe Sidebar"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

@@ -1,13 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Hip Health AI - EHR Autofill",
-  "version": "1.1",
-  "description": "Securely autofills structured clinical notes from Hip Health AI directly into any EMR/EHR system.",
-  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "name": "Hip Health Secure AI Scribe",
+  "version": "2.0",
+  "description": "Sovereign zero-retention clinical scribe extension that records sessions and injects clinical notes directly into any EHR.",
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "host_permissions": [
+    "https://*.googleapis.com/*"
+  ],
   "action": {
-    "default_title": "Inject Clinical Note"
+    "default_popup": "popup.html",
+    "default_title": "Hip Scribe Sidebar"
   },
   "background": {
     "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
   }
 }

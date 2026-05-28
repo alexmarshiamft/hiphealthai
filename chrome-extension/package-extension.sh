@@ -12,7 +12,7 @@ cd "$EXTENSION_DIR" || exit 1
 rm -f "$OUTPUT_ZIP"
 
 # Create a clean ZIP with only required Manifest V3 assets
-zip -r "$OUTPUT_ZIP" manifest.json background.js content.js \
+zip -r "$OUTPUT_ZIP" manifest.json background.js content.js popup.html popup.js \
   -x "*.DS_Store" \
   -x "Thumbs.db"
 

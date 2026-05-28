@@ -2,22 +2,24 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { generateSecret, generateURI } from 'otplib';
 
+const SETUP_COOKIE_MAX_AGE_SECONDS = 10 * 60;
+
 export async function POST() {
   try {
     const secret = generateSecret();
     const otpauth = generateURI({
       label: 'clinician@hiphealthai.com',
       issuer: 'Hip AI Health Secure Scribe',
-      secret
+      secret,
     });
 
     const cookieStore = await cookies();
-    cookieStore.set('mfa_secret', secret, {
+    cookieStore.set('pending_mfa_secret', secret, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 60 * 10, // 10 minutes
-      path: '/'
+      maxAge: SETUP_COOKIE_MAX_AGE_SECONDS,
+      path: '/',
     });
 
     return NextResponse.json({ otpauth });
